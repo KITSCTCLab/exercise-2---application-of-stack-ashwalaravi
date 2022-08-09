@@ -104,7 +104,7 @@ class Evaluate:
         if len(self.stack) > 1:
             return False
         else:
-            return self.stack[0]
+            return int(self.stack[0])
 
     # Write your code here
 
