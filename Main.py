@@ -1,4 +1,5 @@
 class Evaluate:
+  
   """This class validates and evaluate postfix expression.
   Attributes:
       top: An integer which denotes the index of the element at the top of the stack currently.
@@ -25,6 +26,11 @@ class Evaluate:
       True if it is empty, else returns False.
     """
       # Write your code here
+      if self.top == -1:
+        return 1
+      else:
+        return 0
+      
 
 
   def pop(self):
@@ -33,6 +39,12 @@ class Evaluate:
     Returns:
       The data which is popped out if the stack is not empty.
     """
+    if  not self.isEmpty():
+      
+      
+      self.stack.pop()
+      self.top-=1
+      
     # Write your code here
 
 
@@ -42,6 +54,10 @@ class Evaluate:
     Arguments:
       operand: The operand to be pushed.
     """
+    if not self.top == (size -1):
+      self.stack.append(operand)
+      
+      self.top+=1
     # Write your code here
 
 
@@ -53,6 +69,14 @@ class Evaluate:
     Returns:
       True if the expression is valid, else returns False.
     """
+    for i in expression:
+      if i.isnumeric() or i in "+-*/^":
+        return True
+      else:
+        return False
+        
+    
+    
     # Write your code here
 
 
@@ -64,6 +88,38 @@ class Evaluate:
     Returns:
       The result of evaluated postfix expression.
     """
+    for i in expression:
+      
+      if i == '+':
+        op2 = self.stack.pop()
+        op1 = self.stack.pop()
+        result = op1+op2
+        self.push(result)
+      elif i == '*':
+        op2 = self.pop()
+        op1 = self.pop()
+        result = op1*op2
+        self.push(result)
+      elif i  == '-':
+        op2 = self.pop()
+        op1 = self.pop()
+        result = op1-op2
+        self.push(result)
+      elif i == '/':
+        op2 = self.pop()
+        op1 = self.pop()
+        result = op1/op2
+        self.push(result)
+      else:
+        self.push(int(v))
+if len(self.stack) >1:
+  return False
+else:
+  return self.stack[0]
+      
+    
+      
+     
     # Write your code here
 
 
