@@ -102,13 +102,11 @@ class Evaluate:
             else:
                 self.push(int(i))
         if len(self.stack) > 1:
-            return "Invalid postfix expression"
+            return False
         else:
             return self.stack[0]
-      
-     
-    # Write your code here
 
+    # Write your code here
 
 # Do not change the following code
 postfix_expression = input()  # Read postfix expression
